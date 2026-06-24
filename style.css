@@ -1,0 +1,169 @@
+:root {
+  --bg-dark:      #1a1a1a;
+  --calc-body:    #c8c8c8;
+  --display-bg:   #2e2e2e;
+  --btn-light:    #e8e8e8;
+  --btn-shadow:   #a0a0a0;
+  --red-accent:   #e03030;
+  --red-dark:     #b82020;
+  --text-dark:    #2a2a2a;
+  --text-display: #f0f0f0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg-dark);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ── Calculator body ── */
+.calculator {
+  background: var(--calc-body);
+  border-radius: 28px;
+  padding: 18px 18px 22px;
+  width: 260px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    inset 0 2px 0 rgba(255,255,255,0.5),
+    inset 0 -4px 0 rgba(0,0,0,0.2);
+}
+
+/* ── Display ── */
+.display {
+  background: var(--display-bg);
+  border-radius: 10px;
+  padding: 10px 14px 12px;
+  margin-bottom: 14px;
+  box-shadow:
+    inset 0 3px 8px rgba(0,0,0,0.6),
+    inset 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.display-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.display-mode {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+.display-badges { display:flex; gap:5px; }
+
+.badge {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+}
+.badge-error, .badge-function {color: white; }
+
+.display-number {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 26px;
+  color: var(--text-display);
+  text-align: right;
+  letter-spacing: 2px;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 32px;
+}
+
+/* ── Button grid ── */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.btn {
+  width: 100%; aspect-ratio: 1;
+  border: none; border-radius: 50%;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px; font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  outline: none;
+  display: flex; align-items: center; justify-content: center;
+  user-select: none;
+}
+
+.btn-num {
+  background: var(--btn-light);
+  color: var(--text-dark);
+  box-shadow:
+    0 5px 0 var(--btn-shadow),
+    0 6px 12px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.btn-op-red {
+  background: var(--btn-light);
+  color: var(--red-accent);
+  box-shadow:
+    0 5px 0 var(--btn-shadow),
+    0 6px 12px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.btn-equals {
+  background: var(--red-accent);
+  color: white;
+  box-shadow:
+    0 5px 0 var(--red-dark),
+    0 6px 12px rgba(200,0,0,0.35),
+    inset 0 1px 0 rgba(255,150,150,0.4);
+}
+
+.btn-zero {
+  aspect-ratio: auto;
+  border-radius: 28px;
+  height: 100%;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 var(--btn-shadow),
+    0 3px 6px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.btn-equals:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 var(--red-dark),
+    0 3px 6px rgba(200,0,0,0.25),
+    inset 0 1px 0 rgba(255,150,150,0.3);
+}
+.btn:hover:not(:active) { filter: brightness(1.04); }
+
+/* ── Brand ── */
+.brand {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 5px;
+  color: #909090;
+  text-transform: uppercase;
+}
+
+/* ── Flash animation ── */
+@keyframes flash {
+  0%   { opacity:1; }
+  50%  { opacity:0.4; }
+  100% { opacity:1; }
+}
+.flash { animation: flash 0.15s ease; }
